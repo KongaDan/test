@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+{% block title %}Listes des Analyses sanguine{% endblock title %}
+{% block content %}
+<div class=" p-3 container">
+  <div
+      class="row"
+  >
+      <div class="col-10"><h2>Listes des Analyses sanguine concernant {{enfant.nom}} {{enfant.prenom}} {{enfant.postnom}} </h2></div>
+      <div class="col">    
+          <a href="{%url 'core:analyse_sanguine_create' enfant.code_id %}" class=" btn btn-primary  btn-sm p-2 active" role="button" aria-pressed="true">Nouvelle Analyse</a>
+      </div>
+      
+  </div> 
+</div>
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Numero</th>
+        <th scope="col">Date </th>
+        <th scope="col">hemoglobine</th>
+        <th scope="col">Albumine</th>
+        <th scope="col">Azote urique sang</th>
+        <th scope="col">creatinine</th>
+        <th scope="col">Uree creatinine</th>
+        <th scope="col">fer serique</th>
+        <th scope="col">ge</th>
+        <th scope="col">Action 1</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for an in analyse_sanguines %}
+        <tr>
+            <td>{{an.id}}</td>
+            <td>{{an.date}}</td>
+            <td>{{an.hemoglobine}}</td>
+            <td>{{an.albumine}}</td>
+            <td>{{an.azote_urique_sang}}</td>
+            <td>{{an.creatinine}}</td>
+            <td>{{an.uree_creatinine}}</td>
+            <td>{{an.fer_serique}}</td>
+            <td>{{an.ge}}</td>
+            <td>
+                <a href="{%url 'core:analyse_sanguine_delete' enfant.code_id an.id %}" style="color:red; text-decoration:none;">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock content %}

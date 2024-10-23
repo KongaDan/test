@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% block title %}Listes des Prelevement{% endblock title %}
+{% block content %}
+<div class=" p-3 container">
+  <div
+      class="row"
+  >
+      <div class="col-10"><h2>Listes des prelevements concernant {{enfant.nom}} {{enfant.prenom}} {{enfant.postnom}} </h2></div>
+      <div class="col">    
+          <a href="{%url 'core:prelevement_create' enfant.code_id %}" class=" btn btn-primary  btn-sm p-2 active" role="button" aria-pressed="true">Nouveau prelevement</a>
+      </div>
+      
+  </div> 
+</div>
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Numero</th>
+        <th scope="col">Date </th>
+        <th scope="col">Quantite spiruline</th>
+        <th scope="col">poids</th>
+        <th scope="col">taille (cm)</th>
+        <th scope="col">IMC</th>
+        <th scope="col">pa</th>
+        <th scope="col">pb</th>
+        <th scope="col">Oedeme Nutritionelle</th>
+        <th scope="col">Classification</th>
+        <th scope="col">Action 1</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prelevement in prelevements %}
+      <tr>
+          <td>{{prelevement.numero}}</td>
+          <td>{{prelevement.date_prelevement}}</td>
+          <td>{{prelevement.qte_spiruline_recue}}</td>
+          <td>{{prelevement.poids}}</td>
+          <td>{{prelevement.taille_en_cm}}</td>
+          <td>{{prelevement.imc}}</td>
+          <td>{{prelevement.pa}}</td>
+          <td>{{prelevement.pb}}</td>
+          <td>{{prelevement.oedeme_nutri}}</td>
+          <td>{{prelevement.classification}}</td>
+          <td>
+              <a href="{%url 'core:prelevement_delete' enfant.code_id prelevement.numero%}" style="color:red; text-decoration:none;">Supprimer</a>
+          </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock content %}

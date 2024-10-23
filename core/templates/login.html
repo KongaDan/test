@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static "style.css"%}">
+{% endblock  %}
+{% block content %}
+<div class="login-wrapper">
+  <div class="login-side">
+      <div class="my-form__wrapper">
+          <div class="login-welcome-row">
+              <h1>Welcome</h1>
+              <p>Please enter your details!</p>
+              <p>{{message}}</p>
+          </div>
+          <form class="my-form" method="post">
+              <div class="text-field">
+                  <label for="Username">Username :</label>
+                  <input
+                      type="text"
+                      id="Username"
+                      name="username"
+                      placeholder="Your Username"
+                      required
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+              </div>
+              <div class="text-field">
+                  <label for="password">Password :</label>
+                  <input
+                      id="password"
+                      type="password"
+                      name="password"
+                      placeholder="Your Password"
+                      title="Minimum 6 characters at 
+                          least 1 Alphabet and 1 Number"
+                      required
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z">
+                        </path>
+                        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                        <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+                    </svg>
+                  {% csrf_token %}
+              </div>
+              <input type="submit" class="my-form__button" value="Login">
+          </form>
+      </div>
+  </div>
+</div> 
+{% endblock content %}

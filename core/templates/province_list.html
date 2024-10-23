@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %}Listes des Provinces{% endblock title %}
+{% block content %}
+<div class="mb-2 container">
+  <div
+      class="row"
+  >
+      <div class="col-10"><h2>Listes des Province</h2></div>
+      <div class="col-2">    
+          <a href="{%url 'core:province_create'%}" class=" btn btn-secondary  active" role="button" aria-pressed="true">Ajouter</a>
+      </div>
+      
+  </div> 
+</div>
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Action 1</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for province in provinces %}
+        <tr>
+            <td>{{province.code_province}}</td>
+            <td>{{province.nom_province}}</td>
+            <td>
+                <a href="{%url 'core:province_update' province.code_province%}" style="color:rgb(30, 102, 209); text-decoration:none;">Modifier</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock content %}

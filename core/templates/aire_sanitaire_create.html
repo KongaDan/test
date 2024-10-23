@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% block title %}Formulaire{% endblock title %}
+{% block content %}
+<h2>{{view}} Aire sanitaire</h2>
+<form method ='post'>
+    {% csrf_token %}
+    <div
+        class="container"
+    >
+        <div
+            class="row justify-content-center align-items-center g-2"
+        >
+            <div class="col ">
+                <div class="form-floating mb-3">
+                    {{form.nom_aire}}
+                    <label for="{{form.nom_aire.id_for_label}}">Nom de l'aire sanitaire</label>
+                </div>
+            </div>
+            <div class="col ">
+                <div class="form-floating mb-3">
+                    {{form.address}}
+                    <label for="{{form.address.id_for_label}}">Adresse de l'aire sanitaire</label>
+                </div>
+            </div>
+            <div class="col ">
+                <div class="form-floating mb-3">
+                    {{form.code_zone}}
+                    <label for="{{form.code_zone.id_for_label}}">Sa zone Sanitaire </label>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div
+        class="container"
+    >
+        <div
+            class="row  "
+        >
+            <div class="d-flex   justify-content-center col">
+                <button type="submit" class="btn btn-success">
+                    Enregistrer
+                </button>
+            </div>
+        
+            <div class="d-flex justify-content-center col">
+                <a
+                    name=""
+                    id=""
+                    class="btn btn-secondary"
+                    href="{%url 'core:aire_sanitaire_list'%}"
+                    role="button"
+                    >Annuler</a
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+
+
+{% endblock content %}

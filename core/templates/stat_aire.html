@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% block title %}Listes des Provinces{% endblock title %}
+{% block content %}
+<h2>Statiques par Aire sanitaire</h2>
+<div class="table-responsive small ">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Aire sanitaire</th>
+          <th scope="col">Pourcentage d'enfant </th>
+          <th scope="col">Enfant en dessous de 59 mois</th>
+          <th scope="col">Enfant au dessus de 59 mois</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>Pigeon</td>
+            <td>67 %</td>
+            <td>30 %</td>
+            <td>37 %</td>
+          </tr>
+          <tr>
+            <td>Meteo</td>
+            <td>57 %</td>
+            <td>10.1 %</td>
+            <td>46.9 %</td>
+          </tr>
+        {% for aire_sanitaire in aire_sanitaires %}
+        <tr>
+            <td>{{aire_sanitaire.nom_aire}}</td>
+            <td>75 %</td>
+            <td>37.4 %</td>
+            <td>62.8 %</td>
+          </tr>
+        {% endfor %}
+    
+      </tbody>
+    </table>
+  </div>
+
+
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+{% block title %}Formulaire{% endblock title %}
+{% block content %}
+<h2 class="mb-3">{{view}} : {{enfant.nom}} {{enfant.postnom}}</h2>
+<form method ='post'>
+    {% csrf_token %}
+    <div class="form-group row mb-2">
+      <label for="{{form.hemoglobine.id_for_label}}" class="col-sm-2 col-form-label">Hemoglobine</label>
+      <div class="col-sm-10">
+        {{form.hemoglobine}}
+      </div>
+    </div>
+    <div class="form-group row mb-2">
+      <label for="{{form.albumine.id_for_label}}" class="col-sm-2 col-form-label">Albumine</label>
+      <div class="col-sm-10">
+        {{form.albumine}}
+      </div>
+    </div>
+    <div class="form-group row mb-2">
+        <label for="{{form.azote_urique_sang.id_for_label}}" class="col-sm-2 col-form-label">Azote Urique sang</label>
+        <div class="col-sm-10">
+          {{form.azote_urique_sang}}
+        </div>
+    </div>
+    <div class="form-group row mb-2">
+        <label for="{{form.creatinine.id_for_label}}" class="col-sm-2 col-form-label">Creatinine</label>
+        <div class="col-sm-10">
+          {{form.creatinine}}
+        </div>
+        <div class="form-group row mb-2">
+          <label for="{{form.uree_creatinine.id_for_label}}" class="col-sm-2 col-form-label">Uree Creatinine</label>
+          <div class="col-sm-10">
+            {{form.uree_creatinine}}
+          </div>
+    </div>
+    <div class="form-group row mb-2">
+        <label for="{{form.fer_serique.id_for_label}}" class="col-sm-2 col-form-label">Fer serique</label>
+        <div class="col-sm-10">
+          {{form.fer_serique}}
+        </div>
+</div>
+<div class="form-group row mb-2">
+    <label for="{{form.ge.id_for_label}}" class="col-sm-2 col-form-label">Ge</label>
+    <div class="col-sm-10">
+      {{form.ge}}
+    </div>
+</div>
+    <div
+        class="container"
+    >
+        <div class="row  ">
+            <div class="d-flex   justify-content-center col">
+              {% if permis %}
+              <button type="submit" class="btn btn-success">
+                Enregistrer
+              </button>
+              {% else %}
+              <div class='col'>
+              La derniere analyse sanguine date du {{analyse_sanguine_last.date}}, vous devez attendre 1 mois a partir de cette date.
+              </div>
+              <button type="submit" class=" col-4 btn btn-success disabled">
+                Enregistrer
+              </button>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+{% endblock content %}

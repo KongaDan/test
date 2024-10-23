@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% block title %}Analyse Sanguine{% endblock title %}
+{% block content %}
+<h2>Confirmer la suppresion</h2>
+<div class="m-3">
+    L'Analyse sanguine {{analyse_sanguine.id}} de {{enfant.nom}} {{enfant.prenom}} {{enfant.postnom}} va definittivement etre Supprimer
+</div>
+<div class="table-responsive small">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Date </th>
+            <th scope="col">hemoglobine</th>
+            <th scope="col">Albumine</th>
+            <th scope="col">Azote urique sang</th>
+            <th scope="col">creatinine</th>
+            <th scope="col">Uree creatinine</th>
+            <th scope="col">fer serique</th>
+            <th scope="col">ge</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{analyse_sanguine.id}}</td>
+              <td>{{analyse_sanguine.date}}</td>
+              <td>{{analyse_sanguine.hemoglobine}}</td>
+              <td>{{analyse_sanguine.albumine}}</td>
+              <td>{{analyse_sanguine.azote_urique_sang}}</td>
+              <td>{{analyse_sanguine.creatinine}}</td>
+              <td>{{analyse_sanguine.uree_creatinine}}</td>
+              <td>{{analyse_sanguine.fer_serique}}</td>
+              <td>{{analyse_sanguine.ge}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex align-items-center justify-content-center m-2">
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger btn-xl" >Supprimer</button>
+    </form>
+  </div>
+
+{% endblock content %}

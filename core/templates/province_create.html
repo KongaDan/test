@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% block title %}Formulaire{% endblock title %}
+{% block content %}
+<h2>{{view}} Province</h2>
+<form method ='post'>
+    {% csrf_token %}
+    <div
+        class="container"
+    >
+        <div
+            class="row justify-content-center align-items-center g-2"
+        >
+            <div class="col ">
+                <div class="form-floating mb-3">
+                    {{form.nom_province}}
+                    <label for="{{form.nom_province.id_for_label}}">Nom de la Province</label>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div
+        class="container"
+    >
+        <div
+            class="row  "
+        >
+            <div class="d-flex   justify-content-center col">
+                <button type="submit" class="btn btn-success">
+                    Enregistrer
+                </button>
+            </div>
+        
+            <div class="d-flex justify-content-center col">
+                <a
+                    name=""
+                    id=""
+                    class="btn btn-secondary"
+                    href="{%url 'core:province_list'%}"
+                    role="button"
+                    >Annuler</a
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+
+
+{% endblock content %}

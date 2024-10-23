@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+{% block title %}Listes des Enfant{% endblock title %}
+{% block content %}
+<div class="mb-2 container">
+  <div class="row">
+    <div class="col"><h2>Rechercher un enfant existant</h2></div>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <div class ="m-2 container">
+      <div class="row mb-3">
+        <div class="col">
+          {{form.name}}
+        </div>
+        <div class="col">
+          {{form.prenom}}
+        </div>
+        <div class="col">
+          {{form.postnom}}
+        </div>
+        <div class="col">
+          <button
+            class="btn btn-outline-primary"
+          >
+            Rechercher
+          </button>
+          
+        </div>
+          
+      </div>
+    </div>
+  </form>
+  {% if enfants is not None %}
+    {% if enfants|length == 0 %}
+      <div class="row m-2">
+        <div class="col">Il n'y a pas des correspondances a votre recherhce</div>
+      </div>
+    {% elif enfants|length > 0 %}
+      <div class="row m-2">
+        <div class="col">Il y'a {{enfants|length}} correspondances a votre recherhce</div>
+      </div>
+    {% endif %}
+  {% endif %}
+  
+</div>
+<div class="table-responsive small">
+  <table class="table table-striped table-lg">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Postnom</th>
+        <th scope="col">Sex</th>
+        <th scope="col">Quartier</th>
+        <th scope="col">Avenue</th>
+        <th scope="col">Action 1</th>
+        <th scope="col">Action 1</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for enfant in enfants %}
+        <tr>
+            <td>{{enfant.code_id}}</td>
+            <td>{{enfant.nom}}</td>
+            <td>{{enfant.prenom}}</td>
+            <td>{{enfant.postnom}}</td>
+            <td>{{enfant.sex}}</td>
+            <td>{{enfant.quartier}}</td>
+            <td>{{enfant.avenue}}</td>
+            <td>
+                <a href="{%url 'core:prelevement_list' enfant.code_id %}" style="color:rgb(30, 102, 209); text-decoration:none;">Prelevement</a>
+            </td>
+            <td>
+                <a href="{%url 'core:analyse_sanguine_list' enfant.code_id%}" style="color:rgb(30, 102, 209); text-decoration:none;">Analyse sanguine</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock content %}
